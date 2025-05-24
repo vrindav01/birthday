@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Birthday Wishes</title>
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    (function(){
+      emailjs.init("rk_uV-5LVhEFjW6DG"); // Replace with your actual public key
+    })();
+  </script>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #e0f7fa;
+    }
+
+    .slider-wrapper {
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .container {
+      display: flex;
+      width: 1600vw;
+      height: 100vh;
+      transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+    }
+
+    .slide {
+      flex: 0 0 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background-color: #e0f7fa;
+      padding: 0;
+      box-sizing: border-box;
+      position: relative;
+      opacity: 0;
+      animation: fadeInSlide 1s ease forwards;
+    }
+
+    @keyframes fadeInSlide {
+      from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .slide img {
+      height: 100vh;
+      max-width: 100vw;
+      /* object-fit: contain; */
+      border-radius: 0;
+      box-shadow: none;
+      margin: 0;
+    }
+
+    @media (max-width: 768px) {
+  .slide {
+    padding: 0;
+  }
+
+  .slide img {
+    max-height: 100vh;
+    width: auto;
+    max-width: 100vw;
+    margin: 0 auto;
+  }
+}
+
+    .slide-form {
+      flex-direction: column;
+      color: #000;
+      justify-content: center;
+      position: relative;
+      z-index: 10;
+    }
+
+    .content {
+      text-align: center;
+      max-width: 90vw;
+      z-index: 11;
+    }
+
+    .content h1 {
+      font-size: 1.5em;
+      margin-bottom: 10px;
+    }
+
+    .content p {
+      font-size: 1em;
+    }
+
+    form input, form textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 1em;
+    }
+
+    form button {
+      background-color: #00796b;
+      color: #fff;
+      padding: 10px 20px;
+      font-size: 1em;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+      z-index: 5;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        width: 1600vw;
+        height: 100vh;
+      }
+
+      .slide img {
+        height: 100vh;
+        max-width: 100vw;
+        margin: 0;
+      }
+    }
+
+    .nav-button {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: black;
+      font-size: 2.5rem;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      z-index: 20;
+    }
+
+    #prevBtn {
+      left: 10px;
+    }
+
+    #nextBtn {
+      right: 10px;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="slider-wrapper">
+    <div id="overlay" class="overlay" onclick="handleOverlayClick()"></div>
+    <div id="slider" class="container">
+      <div class="slide"><img src="https://raw.githubusercontent.com/kal-7/bday/main/1.jpg" alt="Birthday 1"></div>
+      <div class="slide"><img src="https://raw.githubusercontent.com/kal-7/bday/main/2.jpg" alt="Birthday 2"></div>
+      <div class="slide"><img src="https://raw.githubusercontent.com/kal-7/bday/main/3.jpg" alt="Birthday 3"></div>
+      <div class="slide"><img src="https://raw.githubusercontent.com/kal-7/bday/main/4.jpg" alt="Birthday 4"></div>
+      <div class="slide"><img src="https://raw.githubusercontent.com/kal-7/bday/main/5.png" alt="Birthday 5"></div>
+      <div class="slide"><img src="https://raw.githubusercontent.com/kal-7/bday/main/6.png" alt="Birthday 6"></div>
+      <div class="slide"><img src="https://raw.githubusercontent.com/kal-7/bday/main/7.jpg" alt="Birthday 7"></div>
+      <div class="slide"><img src="https://raw.githubusercontent.com/kal-7/bday/main/8.jpg" alt="Birthday 8"></div>
+      <div class="slide"><img src="https://raw.githubusercontent.com/kal-7/bday/main/9.jpg" alt="Birthday 9"></div>
+      <div class="slide"><img src="https://raw.githubusercontent.com/kal-7/bday/main/10.jpg" alt="Birthday 10"></div>
+      <div class="slide"><img src="https://raw.githubusercontent.com/kal-7/bday/main/11.jpg" alt="Birthday 11"></div>
+      <div class="slide"><img src="https://raw.githubusercontent.com/kal-7/bday/main/12.jpg" alt="Birthday 12"></div>
+      <div class="slide"><img src="https://raw.githubusercontent.com/kal-7/bday/main/13.jpg" alt="Birthday 13"></div>
+      <div class="slide"><img src="https://raw.githubusercontent.com/kal-7/bday/main/14.jpg" alt="Birthday 14"></div>
+      <div class="slide slide-form">
+        <div class="content">
+            <h1>Send Your Best Wishes and Blessings for me</h1>
+            <p>To create a beautiful memory of you when i read them in future!</p>
+          <form id="wishForm" onsubmit="sendWish(event)" onfocusin="disableOverlay()" onfocusout="maybeEnableOverlay(event)">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <textarea name="message" rows="4" placeholder="Your Birthday Wish..." required></textarea>
+            <button type="submit">Send Wish</button>
+            <button type="button" onclick="goToFirstSlide()" >Start Over</button>
+            <div class="loader" style="display: none;" id="loader">Sending Wishes...</div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <button id="prevBtn" class="nav-button" onclick="prevSlide()">⟵</button>
+    <button id="nextBtn" class="nav-button" onclick="nextSlide()">⟶</button>
+  </div>
+
+  <script>
+    let currentSlide = 0;
+    const totalSlides = 15;
+    const overlay = document.getElementById('overlay');
+
+    function nextSlide() {
+      if (currentSlide < totalSlides - 1) {
+        currentSlide++;
+        updateSlide();
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlide > 0) {
+        currentSlide--;
+        updateSlide();
+      }
+    }
+
+    function updateSlide() {
+      document.getElementById('slider').style.transform = `translateX(-${currentSlide * 100}vw)`;
+      overlay.style.display = (currentSlide === totalSlides - 1) ? 'none' : 'block';
+    }
+
+    function goToFirstSlide() {
+  currentSlide = 0;
+  updateSlide();
+  overlay.style.display = 'block';
+}
+
+
+    function handleOverlayClick() {
+      if (currentSlide < totalSlides - 1) {
+        currentSlide++;
+        updateSlide();
+      }
+    }
+
+    function disableOverlay() {
+      overlay.style.display = 'none';
+    }
+
+    function maybeEnableOverlay(event) {
+      if (!event.currentTarget.contains(document.activeElement)) {
+        if (currentSlide !== totalSlides - 1) overlay.style.display = 'block';
+      }
+    }
+
+    function sendWish(event) {
+      event.preventDefault();
+      const form = document.getElementById('wishForm');
+      const name = form.name.value;
+      const message = form.message.value;
+
+      if (!name || !message) {
+        alert("Please fill in both your name and message.");
+        return;
+      }
+      loader.style.display = 'block';
+      emailjs.send("service_0im1d8o","template_o32tpxf", {
+        name: name,
+        message: message
+      }).then(function(response) {
+        alert("Wish sent successfully!");
+        form.reset();
+        loader.style.display = 'none';
+      }, function(error) {
+        alert("Failed to send wish. Please try again.");
+        loader.style.display = 'none';
+      });
+    }
+  </script>
+</body>
+</html>
