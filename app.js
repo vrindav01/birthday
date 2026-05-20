@@ -60,14 +60,15 @@ document.getElementById("loaderOverlay")
       .storage
       .from("wishes")
       .getPublicUrl(fileName);
-document.getElementById("loaderOverlay")
-  .style.display = "none";
+//document.getElementById("loaderOverlay")
+//  .style.display = "none";
     // Reload page after short delay
-    setTimeout(() => {
-      window.location.reload();
-    }, 1200);
+//    setTimeout(() => {
+//      window.location.reload();
+//    }, 1200);
 
-    console.log(publicData.publicUrl);
+document.getElementById("loaderBox").style.display = "none";
+    document.getElementById("successBox").style.display = "block";
 
   }, "image/png");
 }

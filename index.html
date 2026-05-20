@@ -123,14 +123,30 @@
 
 <div class="loader-overlay" id="loaderOverlay">
 
-  <div class="loader-box">
-
+  <div class="loader-box" id="loaderBox">
     <div class="spinner"></div>
-
     <div class="loader-text">
       Sending Wishes 💖
     </div>
+  </div>
 
+  <div class="loader-box" id="successBox" style="display: none; text-align: center;">
+    <div style="font-size: 3rem; margin-bottom: 15px;">🎉</div>
+    <div class="loader-text" style="margin-bottom: 20px; font-weight: bold;">
+      Wishes Sent Successfully! 💖
+    </div>
+    <button onclick="window.location.reload()" style="
+      background-color: #ff477e;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    ">
+      ✨ Create Another Wish
+    </button>
   </div>
 
 </div>

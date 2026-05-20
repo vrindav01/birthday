@@ -78,25 +78,23 @@ body{
 ========================= */
 
 .top-card{
-  background-image:url('./assets/top-bg.jpg');
+  background-image:url('./assets/top-bg.png');
 
   display:flex;
-  justify-content:center;
-  align-items:center;
+      justify-content: left;
+      align-items: flex-start;
+
 }
 
 .top-content{
-  width:60%;
-  height:100%;
-
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-
-  text-align:center;
-
-  padding:40px;
+      width: 60%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: left;
+      align-items: flex-start;
+      text-align: left;
+      padding: 35px 7px;
 }
 
 .top-content h1{
@@ -131,7 +129,7 @@ color:#3ca27a;
 ========================= */
 
 .bottom-card{
-  background-image:url('./assets/bottom-bg.jpg');
+  background-image:url('./assets/bottom-bg.png');
 
   padding:10px 10px;
 }
@@ -143,7 +141,7 @@ color:#3ca27a;
 
   gap:20px 18px;
 
-  align-items:start;
+  align-items:center;
 }
 
 /* =========================
@@ -171,13 +169,12 @@ color:#3ca27a;
 
   background:rgba(255,255,255,0.86);
 
-  border:2px dashed #ff9eb5;
+  border:2px dashed #3ca27a;
 
   border-radius:18px;
 
-  padding:14px;
 
-  font-size:8px;
+  font-size:12pxpx;
 
   color:#5d4037;
 
@@ -333,7 +330,7 @@ button:hover{
   /* TOP SECTION */
 
   .top-content{
-    width:72%;
+    width:60%;
   }
 
   .top-content h1{
@@ -354,8 +351,8 @@ button:hover{
 
   .label{
     font-size:10px;
-
-    padding-top:4px;
+    color: #3ca27a;
+    padding-top:10px;
   }
 
   /* GRID */
@@ -387,8 +384,8 @@ button:hover{
   /* PHOTO BOX */
 
   .kid-photo-box{
-    width:80px;
-    height:120px;
+    width:130px;
+    height:150px;
 width: 20vw;
     height: 10vh;
     right:10px;
@@ -526,8 +523,8 @@ width: 20vw;
   right:2vw;
   bottom:2vh;
 
-  width:90px;
-  height:90px;
+  width:130px;
+  height:150px;
 
   background:white;
 
