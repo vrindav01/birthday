@@ -1,0 +1,568 @@
+/* =========================
+   GLOBAL
+========================= */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  background:#f7f2e8;
+  min-height:100vh;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+
+  font-family:
+    'Trebuchet MS',
+    'Comic Sans MS',
+    sans-serif;
+}
+
+/* =========================
+   MAIN A4 CARD
+========================= */
+
+.postcard{
+  width:794px;
+  min-height:1123px;
+
+  background:white;
+
+  border-radius:30px;
+
+  box-shadow:0 12px 40px rgba(0,0,0,0.15);
+
+  padding:40px 0;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:space-evenly;
+}
+
+.live-card{
+  display:flex !important;
+}
+
+/* =========================
+   A6 PANELS
+========================= */
+
+/* =========================
+   A5 PANELS
+========================= */
+
+.a6-card{
+  width:620px;
+  height:875px;
+
+  position:relative;
+
+  overflow:hidden;
+
+  border-radius:28px;
+
+  box-shadow:0 10px 30px rgba(0,0,0,0.12);
+
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+}
+
+/* =========================
+   TOP CARD
+========================= */
+
+.top-card{
+  background-image:url('./assets/top-bg.jpg');
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.top-content{
+  width:60%;
+  height:100%;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+
+  text-align:center;
+
+  padding:40px;
+}
+
+.top-content h1{
+  font-size:52px;
+
+  color:#6b2d16;
+
+  margin-bottom:25px;
+
+  text-shadow:1px 1px 0 rgba(255,255,255,0.6);
+}
+
+.top-content p{
+  font-size:8px;
+
+
+  margin-bottom:14px;
+
+  line-height:1.5;
+
+  font-weight:600;
+}
+
+.red-text {
+  color:#d94841;
+}
+.green-text {
+color:#3ca27a;
+}
+/* =========================
+   BOTTOM CARD
+========================= */
+
+.bottom-card{
+  background-image:url('./assets/bottom-bg.jpg');
+
+  padding:10px 10px;
+}
+
+.wish-grid{
+  display:grid;
+
+  grid-template-columns:180px 1fr;
+
+  gap:20px 18px;
+
+  align-items:start;
+}
+
+/* =========================
+   LABELS
+========================= */
+
+.label{
+  font-size:8px;
+
+  font-weight:bold;
+
+  color:#6b2d16;
+
+  padding-top:12px;
+
+  line-height:1.3;
+}
+
+/* =========================
+   INPUTS
+========================= */
+
+.wish-input{
+  width:100%;
+
+  background:rgba(255,255,255,0.86);
+
+  border:2px dashed #ff9eb5;
+
+  border-radius:18px;
+
+  padding:14px;
+
+  font-size:8px;
+
+  color:#5d4037;
+
+  line-height:1.5;
+
+  outline:none;
+
+  resize:none;
+
+  font-family:inherit;
+
+  transition:0.2s ease;
+}
+
+.wish-input:focus{
+  border-color:#ff6f91;
+
+  background:white;
+
+  box-shadow:0 0 0 4px rgba(255,111,145,0.12);
+}
+
+textarea.wish-input{
+  min-height:30px;
+}
+
+.memory-box{
+  min-height:30px !important;
+}
+
+/* =========================
+   BUTTON AREA
+========================= */
+
+.action-area{
+  width:100%;
+
+  max-width:520px;
+
+  margin-top:30px;
+}
+
+/* =========================
+   SEND BUTTON
+========================= */
+
+button{
+  width:100%;
+
+  padding:18px;
+
+  border:none;
+
+  border-radius:20px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #ff5e7e,
+      #ff8c42
+    );
+
+  color:white;
+
+  font-size:22px;
+
+  font-weight:bold;
+
+  cursor:pointer;
+
+  margin-bottom:15px;
+
+  box-shadow:0 8px 25px rgba(0,0,0,0.12);
+
+  transition:0.25s ease;
+}
+
+button:hover{
+  transform:translateY(-2px);
+
+  box-shadow:0 12px 28px rgba(0,0,0,0.18);
+}
+
+/* =========================
+   GALLERY BUTTON
+========================= */
+
+.gallery-btn{
+  display:block;
+
+  text-align:center;
+
+  padding:16px;
+
+  border-radius:18px;
+
+  background:white;
+
+  border:2px solid #ffd3dd;
+
+  color:#ff4f87;
+
+  text-decoration:none;
+
+  font-size:18px;
+
+  font-weight:bold;
+
+  transition:0.2s ease;
+}
+
+.gallery-btn:hover{
+  background:#fff1f5;
+}
+
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:900px){
+
+  body{
+  }
+
+  /* A4 CARD */
+
+  .postcard{
+    width:100%;
+
+    min-height:auto;
+
+    padding:18px 0;
+
+    gap:22px;
+
+    border-radius:18px;
+  }
+
+  /* A6 CARDS */
+
+  .a6-card{
+    width:95%;
+
+    height:260px;
+
+    border-radius:18px;
+  }
+
+  /* TOP SECTION */
+
+  .top-content{
+    width:72%;
+  }
+
+  .top-content h1{
+    font-size:22px;
+
+    margin-bottom:10px;
+  }
+
+  .top-content p{
+    font-size:10px;
+
+    line-height:1.4;
+
+    margin-top:8px;
+  }
+
+  /* LABELS */
+
+  .label{
+    font-size:10px;
+
+    padding-top:4px;
+  }
+
+  /* GRID */
+
+  .wish-grid{
+    grid-template-columns:160px 1fr;
+
+    gap:10px 10px;
+  }
+
+  /* INPUTS */
+
+  .wish-input{
+    font-size:7px;
+
+    padding:8px;
+
+    border-radius:10px;
+  }
+
+  textarea.wish-input{
+    min-height:22px;
+  }
+
+  .memory-box{
+    min-height:22px !important;
+  }
+
+  /* PHOTO BOX */
+
+  .kid-photo-box{
+    width:80px;
+    height:120px;
+width: 20vw;
+    height: 10vh;
+    right:10px;
+    bottom:10px;
+
+    border-radius:10px;
+  }
+
+  .upload-placeholder{
+    font-size:10px;
+  }
+
+  /* BUTTON AREA */
+
+  .action-area{
+    max-width:95%;
+
+    margin-top:20px;
+  }
+
+  button{
+    font-size:16px;
+
+    padding:14px;
+
+    border-radius:14px;
+  }
+
+  .gallery-btn{
+    font-size:14px;
+
+    padding:12px;
+
+    border-radius:14px;
+  }
+
+  /* LOADER */
+
+  .loader-box{
+    padding:24px 28px;
+
+    border-radius:18px;
+  }
+
+  .spinner{
+    width:42px;
+    height:42px;
+
+    border-width:4px;
+  }
+
+  .loader-text{
+    font-size:18px;
+  }
+
+}
+
+/* =========================
+   LOADER
+========================= */
+
+.loader-overlay{
+  position:fixed;
+
+  inset:0;
+
+  background:rgba(255,255,255,0.82);
+
+  backdrop-filter:blur(5px);
+
+  display:none;
+
+  justify-content:center;
+  align-items:center;
+
+  z-index:9999;
+}
+
+.loader-box{
+  background:white;
+
+  padding:35px 45px;
+
+  border-radius:26px;
+
+  box-shadow:0 10px 30px rgba(0,0,0,0.15);
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+
+  gap:20px;
+}
+
+.spinner{
+  width:60px;
+  height:60px;
+
+  border:6px solid #ffd2dc;
+
+  border-top:6px solid #ff5e7e;
+
+  border-radius:50%;
+
+  animation:spin 1s linear infinite;
+}
+
+.loader-text{
+  font-size:24px;
+
+  font-weight:bold;
+
+  color:#ff4f87;
+}
+
+@keyframes spin{
+
+  from{
+    transform:rotate(0deg);
+  }
+
+  to{
+    transform:rotate(360deg);
+  }
+
+}
+
+/* =========================
+   PHOTO UPLOAD
+========================= */
+
+.kid-photo-box{
+  position:absolute;
+
+  right:2vw;
+  bottom:2vh;
+
+  width:90px;
+  height:90px;
+
+  background:white;
+
+  border:4px solid #ffffff;
+
+  border-radius:16px;
+
+  overflow:hidden;
+
+  cursor:pointer;
+
+  box-shadow:0 8px 20px rgba(0,0,0,0.18);
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.preview-image{
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
+
+  display:none;
+}
+
+.upload-placeholder{
+  text-align:center;
+
+  font-size:10px;
+
+  color:#666;
+
+  line-height:1.5;
+
+  font-weight:bold;
+}

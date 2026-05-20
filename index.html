@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>2nd Birthday Wishes 🎂</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- html2canvas -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+  <!-- Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+</head>
+
+<body>
+
+<!-- MAIN CARD -->
+<div class="postcard live-card" id="postcard">
+
+  <!-- TOP A6 -->
+  <div class="a6-card top-card">
+
+    <div class="top-content">
+
+      <p class="red-text">🎂 హలో, నాకు రెండేళ్లు వచ్చేశాయి. మీకు తెలుసా నాకు ఇప్పుడు పరిగెత్తడం ఎక్కడం దుంకడం అల్లరి చేయడం అన్ని వచ్చేశాయి 🎉</p>
+
+      <p class="green-text">
+        నాకు మాట్లాడటం కూడా వస్తుంది కానీ ఇంకా చదవటం రాయటం రాలేదు. అందుకే మీరంతా ఈ పుట్టిన రోజుకు మీ ఆశీస్సుల తో పాటు కొన్ని విషయాలు కూడా చెప్తారా. 💖
+      </p>
+
+      <!-- PHOTO UPLOAD BOX -->
+
+      <label class="kid-photo-box">
+
+        <input
+                type="file"
+                id="photoInput"
+                accept="image/*"
+                hidden
+        />
+
+        <!-- PREVIEW IMAGE -->
+
+        <img
+                id="previewImage"
+                class="preview-image"
+        />
+
+        <!-- PLACEHOLDER -->
+
+        <div
+                id="uploadPlaceholder"
+                class="upload-placeholder"
+        >
+          మీ ఫోటో అప్లోడ్ చేయండి
+        </div>
+
+      </label>
+    </div>
+
+  </div>
+
+  <!-- BOTTOM A6 -->
+  <div class="a6-card bottom-card">
+
+    <div class="wish-grid">
+
+      <div class="label">👋 మీ పేరు</div>
+
+
+      <textarea
+              id="cardName"
+              class="wish-input"
+              placeholder=""
+      ></textarea>
+
+      <div class="label">💌 నేను మిమ్మల్ని ఏమని పిలవాలి </div>
+
+      <textarea
+              id="cardWish"
+              class="wish-input"
+              placeholder=""
+      ></textarea>
+
+      <div class="label">🌟 నేను ఈ సంవత్సరం ఎలాంటి చిలిపి చేష్టలను నేర్చుకుని మా అమ్మ నాన్నలకు కోపం తెప్పించాలి </div>
+
+      <textarea
+              id="cardGrow"
+              class="wish-input"
+              placeholder=""
+      ></textarea>
+
+      <div class="label">🍭 బర్త్డే విషెస్ </div>
+
+      <textarea
+              id="cardMemory"
+              class="wish-input memory-box"
+              placeholder=""
+      ></textarea>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ACTION BUTTON -->
+<div class="action-area">
+
+  <button onclick="generateWishCard()">
+    💖 Send Wishes
+  </button>
+
+  <a href="gallery.html" class="gallery-btn">
+    🎁 View All Wishes
+  </a>
+
+</div>
+<!-- LOADER -->
+
+<div class="loader-overlay" id="loaderOverlay">
+
+  <div class="loader-box">
+
+    <div class="spinner"></div>
+
+    <div class="loader-text">
+      Sending Wishes 💖
+    </div>
+
+  </div>
+
+</div>
+<script src="app.js"></script>
+
+</body>
+</html>
