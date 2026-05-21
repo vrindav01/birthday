@@ -94,7 +94,7 @@ body{
       justify-content: left;
       align-items: flex-start;
       text-align: left;
-      padding: 35px 7px;
+      padding:  7px;
 }
 
 .top-content h1{
@@ -108,21 +108,23 @@ body{
 }
 
 .top-content p{
-  font-size:8px;
-
-
-  margin-bottom:14px;
-
-  line-height:1.5;
-
-  font-weight:600;
+  display: block;
+      font-size: 1.17em;
+      margin-block-start: 1em;
+      margin-block-end: 1em;
+      margin-inline-start: 0px;
+      margin-inline-end: 0px;
+      font-weight: bold;
+      unicode-bidi: isolate;
 }
 
 .red-text {
-  color:#d94841;
+color:#00008B;
+-webkit-text-stroke: 0.3px #00008B;
 }
 .green-text {
-color:#3ca27a;
+color:#d94841;
+-webkit-text-stroke: 0.3px #d94841;
 }
 /* =========================
    BOTTOM CARD
@@ -340,11 +342,14 @@ button:hover{
   }
 
   .top-content p{
-    font-size:10px;
-
-    line-height:1.4;
-
-    margin-top:8px;
+   display: block;
+       font-size: 0.75em;
+       margin-block-start: 1em;
+       margin-block-end: 1em;
+       margin-inline-start: 0px;
+       margin-inline-end: 0px;
+       font-weight: bold;
+       unicode-bidi: isolate;
   }
 
   /* LABELS */
