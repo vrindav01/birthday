@@ -90,18 +90,18 @@ document.getElementById("loaderBox").style.display = "none";
 // AUTO-GROW TEXTAREAS FOR HTML2CANVAS
 // =======================
 
-document.addEventListener("DOMContentLoaded", () => {
-  const textareas = document.querySelectorAll(".wish-input");
-
-  textareas.forEach(textarea => {
-    textarea.addEventListener("input", function() {
-      // Reset height to calculate correctly
-      this.style.height = "auto";
-      // Set height to match the internal scroll height (plus a tiny buffer)
-      this.style.height = (this.scrollHeight) + "px";
-    });
-  });
-});
+//document.addEventListener("DOMContentLoaded", () => {
+//  const textareas = document.querySelectorAll(".wish-input");
+//
+//  textareas.forEach(textarea => {
+//    textarea.addEventListener("input", function() {
+//      // Reset height to calculate correctly
+//      this.style.height = "auto";
+//      // Set height to match the internal scroll height (plus a tiny buffer)
+//      this.style.height = (this.scrollHeight) + "px";
+//    });
+//  });
+//});
 
 // =======================
 // PHOTO PREVIEW
