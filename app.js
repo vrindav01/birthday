@@ -15,7 +15,20 @@ const supabaseClient = supabase.createClient(
 // =======================
 
 async function generateWishCard(){
+const nameField = document.getElementById("cardName");
+  const wishField = document.getElementById("cardWish");
+  const growField = document.getElementById("cardGrow");
+  const memoryField = document.getElementById("cardMemory");
 
+  // Trim whitespace to ensure they didn't just press spacebars
+  if (!nameField.value.trim() ||
+      !wishField.value.trim() ||
+      !growField.value.trim() ||
+      !memoryField.value.trim()) {
+
+    alert("దయచేసి అన్ని వివరాలను నింపండి! (Please fill out all the input fields!)");
+    return; // Stop execution immediately
+  }
   const postcard =
     document.getElementById("postcard");
 
@@ -74,6 +87,23 @@ document.getElementById("loaderBox").style.display = "none";
 }
 
 // =======================
+// AUTO-GROW TEXTAREAS FOR HTML2CANVAS
+// =======================
+
+document.addEventListener("DOMContentLoaded", () => {
+  const textareas = document.querySelectorAll(".wish-input");
+
+  textareas.forEach(textarea => {
+    textarea.addEventListener("input", function() {
+      // Reset height to calculate correctly
+      this.style.height = "auto";
+      // Set height to match the internal scroll height (plus a tiny buffer)
+      this.style.height = (this.scrollHeight) + "px";
+    });
+  });
+});
+
+// =======================
 // PHOTO PREVIEW
 // =======================
 
@@ -83,25 +113,98 @@ const photoInput =
 const previewImage =
   document.getElementById("previewImage");
 
+  const uploadLabel = document.getElementById("uploadLabel");
+
 const uploadPlaceholder =
   document.getElementById("uploadPlaceholder");
 
+
+//photoInput.addEventListener("change", (e) => {
+//
+//  const file = e.target.files[0];
+//
+//  if(!file) return;
+//
+//  const reader = new FileReader();
+//
+//  reader.onload = function(event){
+//
+//    previewImage.src = event.target.result;
+//
+//    previewImage.style.display = "block";
+//
+//    uploadPlaceholder.style.display = "none";
+//
+//  };
+//
+//  reader.readAsDataURL(file);
+//
+//});
+
+// =======================
+// PHOTO PREVIEW (HARD AUTOMATIC TOP-CENTER CROP)
+// =======================
+
+
+
 photoInput.addEventListener("change", (e) => {
-
   const file = e.target.files[0];
-
-  if(!file) return;
+  if (!file) return;
 
   const reader = new FileReader();
 
-  reader.onload = function(event){
+  reader.onload = function(event) {
+    const img = new Image();
+    img.src = event.target.result;
 
-    previewImage.src = event.target.result;
+    img.onload = function() {
+      // Create a temporary canvas to physically crop the image
+      const canvas = document.createElement("canvas");
+      const ctx = canvas.getContext("2d");
 
-    previewImage.style.display = "block";
+      // Set your target box size dimensions (e.g., 400x400 for high resolution)
+      const targetSize = 400;
+      canvas.width = targetSize;
+      canvas.height = targetSize;
 
-    uploadPlaceholder.style.display = "none";
+      let sourceX = 0;
+      let sourceY = 0;
+      let sourceWidth = img.width;
+      let sourceHeight = img.height;
 
+      // Calculate aspect ratio cropping
+      const imageRatio = img.width / img.height;
+
+      if (imageRatio > 1) {
+        // Landscape image: match height, crop sides equally, align to top
+        sourceWidth = img.height;
+        sourceX = (img.width - sourceWidth) / 2;
+        sourceY = 0; // Lock to top
+      } else {
+        // Portrait image: match width, lock to top, cut off excess bottom
+        sourceHeight = img.width;
+        sourceX = 0;
+        sourceY = 0; // Force crop from the very top center
+      }
+
+      // Draw the cropped image onto the canvas
+      ctx.drawImage(
+        img,
+        sourceX, sourceY, sourceWidth, sourceHeight, // Where to cut the original image
+        0, 0, targetSize, targetSize                 // Where to place it on the new canvas
+      );
+
+      // Convert the canvas content back to a perfectly cropped base64 string
+      const croppedBase64 = canvas.toDataURL("image/png");
+
+      // Display it in the preview image element
+          previewImage.src = croppedBase64;
+      previewImage.style.display = "block";
+
+      // Remove placeholder styling
+//      uploadLabel.style.border = "none";
+      uploadPlaceholder.style.display = "none";
+    };
   };
 
   reader.readAsDataURL(file);

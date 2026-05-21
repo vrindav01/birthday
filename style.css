@@ -123,8 +123,8 @@ color:#00008B;
 -webkit-text-stroke: 0.3px #00008B;
 }
 .green-text {
-color:#d94841;
--webkit-text-stroke: 0.3px #d94841;
+color:#6b2d16;
+-webkit-text-stroke: 0.3px #6b2d16;
 }
 /* =========================
    BOTTOM CARD
@@ -178,7 +178,9 @@ color:#d94841;
 
   font-size:12pxpx;
 
-  color:#5d4037;
+  color:#00008B;
+
+  -webkit-text-stroke: 0.3px #00008B;
 
   line-height:1.5;
 
@@ -356,15 +358,15 @@ button:hover{
 
   .label{
     font-size:10px;
-    color: #3ca27a;
-    -webkit-text-stroke: 0.3px #3ca27a;
+    color: #6b2d16;
+    -webkit-text-stroke: 0.3px #6b2d16;
     padding-top:10px;
   }
 
   /* GRID */
 
   .wish-grid{
-    grid-template-columns:160px 1fr;
+    grid-template-columns:120px 1fr;
 
     gap:10px 10px;
   }
@@ -372,11 +374,17 @@ button:hover{
   /* INPUTS */
 
   .wish-input{
-    font-size:7px;
+    font-size:1rem;
+    font-weight: bold;
 
     padding:8px;
-
+        line-height: 0.5;
     border-radius:10px;
+    min-height: 40px;      /* Starting size for 1 line */
+          height: auto;          /* Allows the JS script to control height sizing */
+          resize: none;          /* Hides the manual resize corner handle for a cleaner UI */
+          overflow: hidden;      /* Hides scrollbars since the box expands to fit everything */
+          box-sizing: border-box;
   }
 
   textarea.wish-input{
@@ -390,9 +398,9 @@ button:hover{
   /* PHOTO BOX */
 
   .kid-photo-box{
-    width:130px;
+    width:150px;
     height:150px;
-width: 20vw;
+    width: 20vw;
     height: 10vh;
     right:10px;
     bottom:10px;
