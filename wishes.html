@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Birthday Wishes 🎂</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <link rel="stylesheet" href="wishes.css">
+  <script src="wishes.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <button onclick="downloadAllAsJSON()" class="back-btn download-json-btn">
+      ⬇ Download All Data as JSON
+    </button>
+  </div>
+
+  <div id="loading" class="loading-text">Loading structured entries...</div>
+  <div class="wishes-grid" id="wishesGrid"></div>
+</div>
+
+
+</body>
+</html>

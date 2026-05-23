@@ -59,6 +59,31 @@ document.getElementById("loaderOverlay")
       .storage
       .from("wishes")
       .upload(fileName, blob);
+const previewImage =
+  document.getElementById("previewImage");
+const uploadedImageUrl = previewImage.src;
+          // 5. Submit structured payload directly to Supabase table
+          const { data: dbData, error: dbError } = await supabaseClient
+            .from("wishes")
+            .insert([
+              {
+                name: nameField.value.trim(),
+                nickname: wishField.value.trim(),
+                mischief: growField.value.trim(),
+                birthday_wish: memoryField.value.trim(),
+                image_url: uploadedImageUrl // <-- Now saving the Base64 string directly here
+              }
+            ]);
+
+if(dbError){
+          console.log(error);
+          alert("Upload failed");
+          document.getElementById("loaderOverlay")
+            .style.display = "none";
+          return;
+        }
+
+
 
     if(error){
       console.log(error);
@@ -67,6 +92,7 @@ document.getElementById("loaderOverlay")
         .style.display = "none";
       return;
     }
+
 
     const { data: publicData } =
       supabaseClient

@@ -1,0 +1,69 @@
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f7f9fc;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+    .back-btn {
+      background-color: #ff477e;
+      color: white;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-weight: bold;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    }
+    .wishes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+    }
+    .wish-card {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.05);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .wish-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 12px;
+      background-color: #eaeaea;
+    }
+    .field-group {
+      margin-bottom: 10px;
+    }
+    .field-title {
+      font-weight: bold;
+      color: #ff477e;
+      font-size: 0.85rem;
+      margin: 0 0 2px 0;
+    }
+    .field-value {
+      margin: 0;
+      color: #333333;
+      font-size: 1rem;
+      line-height: 1.4;
+      white-space: pre-wrap;
+    }
+    .loading-text {
+      text-align: center;
+      font-size: 1.2rem;
+      color: #666;
+      margin-top: 50px;
+    }
