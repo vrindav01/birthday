@@ -6,6 +6,10 @@
   <title>All Birthday Wishes 🎂</title>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+  <!-- Fonts copied from index.html to match text looks -->
+  <link href="https://fonts.googleapis.com/css2?family=Titan+One&family=Bungee&family=Luckiest+Guy&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="wishes.css">
   <script src="wishes.js"></script>
 </head>
@@ -13,15 +17,19 @@
 
 <div class="container">
   <div class="header">
+    <button onclick="fetchWishes()" class="back-btn load-wishes-btn">
+      🔄 Load Wishes
+    </button>
     <button onclick="downloadAllAsJSON()" class="back-btn download-json-btn">
       ⬇ Download All Data as JSON
     </button>
   </div>
 
-  <div id="loading" class="loading-text">Loading ...</div>
+  <div id="loading" class="loading-text" style="display: none;">Loading ...</div>
+
+  <!-- This grid container holds your generated postcards -->
   <div class="wishes-grid" id="wishesGrid"></div>
 </div>
-
 
 </body>
 </html>

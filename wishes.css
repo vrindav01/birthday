@@ -1,69 +1,226 @@
+/* =========================
+   GLOBAL & LAYOUT
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f7f9fc;
-      margin: 0;
-      padding: 20px;
-    }
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 30px;
-    }
-    .back-btn {
-      background-color: #ff477e;
-      color: white;
-      text-decoration: none;
-      padding: 10px 20px;
-      border-radius: 20px;
-      font-weight: bold;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-    }
-    .wishes-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 24px;
-    }
-    .wish-card {
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.05);
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .wish-card img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-      border-radius: 12px;
-      background-color: #eaeaea;
-    }
-    .field-group {
-      margin-bottom: 10px;
-    }
-    .field-title {
-      font-weight: bold;
-      color: #ff477e;
-      font-size: 0.85rem;
-      margin: 0 0 2px 0;
-    }
-    .field-value {
-      margin: 0;
-      color: #333333;
-      font-size: 1rem;
-      line-height: 1.4;
-      white-space: pre-wrap;
-    }
-    .loading-text {
-      text-align: center;
-      font-size: 1.2rem;
-      color: #666;
-      margin-top: 50px;
-    }
+body {
+  background: #f7f2e8; /* Styled to match original theme bg */
+  min-height: 100vh;
+  padding: 30px 20px;
+  font-family: 'Trebuchet MS', 'Comic Sans MS', sans-serif;
+}
+
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+/* =========================
+   BUTTON SYSTEMS
+========================= */
+.back-btn {
+  border: none;
+  cursor: pointer;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 20px;
+  font-weight: bold;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.08);
+  font-size: 16px;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.back-btn:active {
+  transform: scale(0.97);
+}
+
+.load-wishes-btn {
+  background-color: #007bff;
+}
+.load-wishes-btn:hover {
+  background-color: #0056b3;
+}
+
+.download-json-btn {
+  background-color: #ff477e;
+}
+.download-json-btn:hover {
+  background-color: #e03269;
+}
+
+.loading-text {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ff4f87;
+  margin-top: 50px;
+}
+
+/* =========================
+   WISHES POSTCARD GRID GRID
+========================= */
+.wishes-grid {
+  display: grid;
+  /* Automatically wraps large desktop postcards into a clean grid */
+  grid-template-columns: repeat(auto-fill, minmax(640px, 1fr));
+  gap: 40px;
+  justify-items: center;
+}
+
+/* COMPACT VERSION OF INDEX.HTML STRUCTURE FOR MULTI-CARD DISPLAY */
+.postcard {
+  width: 640px;
+  background: white;
+  border-radius: 30px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.a6-card {
+  width: 600px;
+  height: auto;
+  min-height: 280px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 24px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.top-card {
+  background-image: url('./assets/top-bg.png');
+  display: flex;
+  justify-content: left;
+  align-items: flex-start;
+}
+
+.top-content {
+  width: 65%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: flex-start;
+  text-align: left;
+  padding: 15px;
+}
+
+.top-content p {
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+.red-text {
+  color: #00008B;
+  -webkit-text-stroke: 0.2px #00008B;
+}
+
+.green-text {
+  color: #6b2d16;
+  -webkit-text-stroke: 0.2px #6b2d16;
+}
+
+/* USER IMAGE CONTAINER PLACEMENT */
+.kid-photo-box-display {
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
+  width: 120px;
+  height: 140px;
+  background: white;
+  border: 4px solid #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+.kid-photo-box-display img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* BOTTOM SECTION CARD */
+.bottom-card {
+  background-image: url('./assets/bottom-bg.png');
+  padding: 20px 15px;
+}
+
+.wish-grid {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 15px 12px;
+  align-items: center;
+}
+
+.label {
+  font-size: 11px;
+  font-weight: bold;
+  color: #6b2d16;
+  -webkit-text-stroke: 0.2px #6b2d16;
+  line-height: 1.3;
+}
+
+/* TRANSFORM INPUTS TO DISPLAY BOXES */
+/* TRANSFORM INPUTS TO DISPLAY BOXES WITH AUTO-EXPANDING HEIGHT */
+.wish-display-box {
+  width: 100%;
+  height: auto;                     /* ALLOWS BOX TO GROW NATURALLY WITH CONTENT */
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px dashed #3ca27a;
+  border-radius: 14px;
+  font-size: 13px;
+  font-weight: bold;
+  color: #00008B;
+  -webkit-text-stroke: 0.2px #00008B;
+  padding: 10px 12px;               /* balanced padding for multi-line readability */
+  line-height: 1.5;                 /* comfortable spacing between sentence lines */
+  white-space: pre-wrap;            /* PRESERVES LINE BREAKS AND WRAPS LONG TEXT */
+  word-break: break-word;           /* PREVENTS VERY LONG WORDS FROM OVERFLOWING */
+}
+
+/* RESPONSIVE DESIGN FOR SMALL PHONES */
+@media(max-width: 680px) {
+  .wishes-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .postcard {
+    width: 100%;
+    border-radius: 18px;
+  }
+  .a6-card {
+    width: 95%;
+  }
+  .wish-grid {
+    grid-template-columns: 100px 1fr;
+    gap: 10px;
+  }
+  .label {
+    font-size: 9px;
+  }
+  .wish-display-box {
+    font-size: 11px;
+  }
+}
