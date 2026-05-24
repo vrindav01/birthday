@@ -195,9 +195,13 @@ body {
   color: #00008B;
   -webkit-text-stroke: 0.2px #00008B;
   padding: 10px 12px;               /* balanced padding for multi-line readability */
-  line-height: 1.5;                 /* comfortable spacing between sentence lines */
+  line-height: 0.6;                 /* comfortable spacing between sentence lines */
   white-space: pre-wrap;            /* PRESERVES LINE BREAKS AND WRAPS LONG TEXT */
   word-break: break-word;           /* PREVENTS VERY LONG WORDS FROM OVERFLOWING */
+}
+.memory-box {
+line-height:1.2;
+min-height:3rem
 }
 
 /* RESPONSIVE DESIGN FOR SMALL PHONES */
@@ -222,5 +226,9 @@ body {
   }
   .wish-display-box {
     font-size: 11px;
+  }
+  .memory-box {
+  line-height:1.2;
+  min-height:3rem
   }
 }

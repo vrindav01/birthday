@@ -107,10 +107,10 @@ if (data && data.length > 0) {
               <div class="wish-display-box">${item.nickname || ''}</div>
 
               <div class="label">నేను ఈ సంవత్సరం ఎలాంటి చిలిపి చేష్టలను నేర్చుకుని మా అమ్మ నాన్నలకు కోపం తెప్పించాలి</div>
-              <div class="wish-display-box">${item.mischief || ''}</div>
+              <div class="wish-display-box memory-box">${item.mischief || ''}</div>
 
               <div class="label">బర్త్డే విషెస్</div>
-              <div class="wish-display-box">${item.birthday_wish || ''}</div>
+              <div class="wish-display-box memory-box">${item.birthday_wish || ''}</div>
 
             </div>
           </div>

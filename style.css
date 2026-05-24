@@ -195,7 +195,7 @@ color:#6b2d16;
 
 /* FIXED: Lifted min-height slightly so text/Telugu scripts don't overlap boundaries */
 textarea.wish-input{
-  min-height: 48px;
+  min-height: 1rem;
 }
 
 .memory-box{
@@ -370,11 +370,11 @@ button:hover{
     padding:7px 12px;
 
     /* CRITICAL FIX: Changed from 0.5 to 1.5. This prevents text overlap! */
-    line-height: 1;
+    line-height: 0.6;
     border-radius:10px;
 
     /* FIXED: Higher default start height to beautifully accommodate 1 to 2 lines */
-    min-height: 45px;
+    min-height: 1rem;
     height: auto;
     resize: none;
     overflow: hidden;
@@ -383,11 +383,12 @@ button:hover{
 
   /* FIXED: Adjusted so mobile handles dynamic sizing nicely */
   textarea.wish-input{
-    min-height: 45px;
+    min-height: 1rem;
   }
 
   .memory-box{
-    min-height: 55px !important;
+    min-height: 3rem !important;
+    line-height: 1.2 !important
   }
 
   /* PHOTO BOX */
