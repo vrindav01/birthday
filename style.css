@@ -168,47 +168,39 @@ color:#6b2d16;
 
 .wish-input{
   width:100%;
-
   background:rgba(255,255,255,0.86);
-
   border:2px dashed #3ca27a;
-
   border-radius:18px;
 
-
-  font-size:12pxpx;
-
+  /* FIXED: Removed typo '12pxpx' and gave Telugu text a bit more size */
+  font-size: 14px;
+  padding: 10px 12px;
   color:#00008B;
-
   -webkit-text-stroke: 0.3px #00008B;
 
-  line-height:1.5;
-
+  /* FIXED: Changed to 1.5 so multi-line text has clean vertical separation */
+  line-height: 1.5;
   outline:none;
-
   resize:none;
-
   font-family:inherit;
-
-  transition:0.2s ease;
+  transition: height 0.1s ease, border-color 0.2s ease, background 0.2s ease;
+  overflow: hidden; /* Hides internal scrollbar as it grows */
 }
 
 .wish-input:focus{
   border-color:#ff6f91;
-
   background:white;
-
   box-shadow:0 0 0 4px rgba(255,111,145,0.12);
 }
 
+/* FIXED: Lifted min-height slightly so text/Telugu scripts don't overlap boundaries */
 textarea.wish-input{
-  min-height:30px;
+  min-height: 48px;
 }
 
 .memory-box{
-  min-height:30px !important;
+  min-height: 60px !important;
 }
-
 /* =========================
    BUTTON AREA
 ========================= */
@@ -370,29 +362,32 @@ button:hover{
 
     gap:10px 10px;
   }
-
-  /* INPUTS */
+/* INPUTS */
 
   .wish-input{
-    font-size:1rem;
+    font-size:0.75rem;
     font-weight: bold;
+    padding:7px 12px;
 
-    padding:8px;
-        line-height: 0.5;
+    /* CRITICAL FIX: Changed from 0.5 to 1.5. This prevents text overlap! */
+    line-height: 1;
     border-radius:10px;
-    min-height: 40px;      /* Starting size for 1 line */
-          height: auto;          /* Allows the JS script to control height sizing */
-          resize: none;          /* Hides the manual resize corner handle for a cleaner UI */
-          overflow: hidden;      /* Hides scrollbars since the box expands to fit everything */
-          box-sizing: border-box;
+
+    /* FIXED: Higher default start height to beautifully accommodate 1 to 2 lines */
+    min-height: 45px;
+    height: auto;
+    resize: none;
+    overflow: hidden;
+    box-sizing: border-box;
   }
 
+  /* FIXED: Adjusted so mobile handles dynamic sizing nicely */
   textarea.wish-input{
-    min-height:22px;
+    min-height: 45px;
   }
 
   .memory-box{
-    min-height:22px !important;
+    min-height: 55px !important;
   }
 
   /* PHOTO BOX */

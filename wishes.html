@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>All Birthday Wishes 🎂</title>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 
   <!-- Fonts copied from index.html to match text looks -->
@@ -22,6 +23,9 @@
     </button>
     <button onclick="downloadAllAsJSON()" class="back-btn download-json-btn">
       ⬇ Download All Data as JSON
+    </button>
+    <button id="downloadPdfBtn" onclick="downloadGridAsPDF()" class="back-btn" style="background-color: #28a745; display: none;">
+      📥 Download Cards as PDF
     </button>
   </div>
 

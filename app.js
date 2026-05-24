@@ -15,7 +15,7 @@ const supabaseClient = supabase.createClient(
 // =======================
 
 async function generateWishCard(){
-const nameField = document.getElementById("cardName");
+  const nameField = document.getElementById("cardName");
   const wishField = document.getElementById("cardWish");
   const growField = document.getElementById("cardGrow");
   const memoryField = document.getElementById("cardMemory");
@@ -36,6 +36,13 @@ const nameField = document.getElementById("cardName");
   document.querySelector(".action-area")
     .style.display = "none";
 
+  // FIXED: Force recalculate heights for all textareas right before html2canvas runs
+  const textareas = document.querySelectorAll(".wish-input");
+  textareas.forEach(textarea => {
+    textarea.style.height = "auto";
+    textarea.style.height = textarea.scrollHeight + "px";
+  });
+
   await document.fonts.ready;
 
   const canvas = await html2canvas(postcard, {
@@ -46,8 +53,8 @@ const nameField = document.getElementById("cardName");
 
   document.querySelector(".action-area")
     .style.display = "block";
-document.getElementById("loaderOverlay")
-  .style.display = "flex";
+  document.getElementById("loaderOverlay")
+    .style.display = "flex";
   canvas.toBlob(async (blob) => {
 
     const fileName =
@@ -59,31 +66,29 @@ document.getElementById("loaderOverlay")
       .storage
       .from("wishes")
       .upload(fileName, blob);
-const previewImage =
-  document.getElementById("previewImage");
-const uploadedImageUrl = previewImage.src;
-          // 5. Submit structured payload directly to Supabase table
-          const { data: dbData, error: dbError } = await supabaseClient
-            .from("wishes")
-            .insert([
-              {
-                name: nameField.value.trim(),
-                nickname: wishField.value.trim(),
-                mischief: growField.value.trim(),
-                birthday_wish: memoryField.value.trim(),
-                image_url: uploadedImageUrl // <-- Now saving the Base64 string directly here
-              }
-            ]);
-
-if(dbError){
-          console.log(error);
-          alert("Upload failed");
-          document.getElementById("loaderOverlay")
-            .style.display = "none";
-          return;
+    const previewImage =
+      document.getElementById("previewImage");
+    const uploadedImageUrl = previewImage.src;
+    // Submit structured payload directly to Supabase table
+    const { data: dbData, error: dbError } = await supabaseClient
+      .from("wishes")
+      .insert([
+        {
+          name: nameField.value.trim(),
+          nickname: wishField.value.trim(),
+          mischief: growField.value.trim(),
+          birthday_wish: memoryField.value.trim(),
+          image_url: uploadedImageUrl // <-- Now saving the Base64 string directly here
         }
+      ]);
 
-
+    if(dbError){
+      console.log(error);
+      alert("Upload failed");
+      document.getElementById("loaderOverlay")
+        .style.display = "none";
+      return;
+    }
 
     if(error){
       console.log(error);
@@ -93,20 +98,13 @@ if(dbError){
       return;
     }
 
-
     const { data: publicData } =
       supabaseClient
       .storage
       .from("wishes")
       .getPublicUrl(fileName);
-//document.getElementById("loaderOverlay")
-//  .style.display = "none";
-    // Reload page after short delay
-//    setTimeout(() => {
-//      window.location.reload();
-//    }, 1200);
 
-document.getElementById("loaderBox").style.display = "none";
+    document.getElementById("loaderBox").style.display = "none";
     document.getElementById("successBox").style.display = "block";
 
   }, "image/png");
@@ -116,21 +114,22 @@ document.getElementById("loaderBox").style.display = "none";
 // AUTO-GROW TEXTAREAS FOR HTML2CANVAS
 // =======================
 
-//document.addEventListener("DOMContentLoaded", () => {
-//  const textareas = document.querySelectorAll(".wish-input");
-//
-//  textareas.forEach(textarea => {
-//    textarea.addEventListener("input", function() {
-//      // Reset height to calculate correctly
-//      this.style.height = "auto";
-//      // Set height to match the internal scroll height (plus a tiny buffer)
-//      this.style.height = (this.scrollHeight) + "px";
-//    });
-//  });
-//});
+// FIXED: Active and uncommented so fields scale smoothly as the user types
+document.addEventListener("DOMContentLoaded", () => {
+  const textareas = document.querySelectorAll(".wish-input");
+
+  textareas.forEach(textarea => {
+    textarea.addEventListener("input", function() {
+      // Reset height to calculate correctly
+      this.style.height = "auto";
+      // Set height to match the internal scroll height
+      this.style.height = (this.scrollHeight) + "px";
+    });
+  });
+});
 
 // =======================
-// PHOTO PREVIEW
+// PHOTO PREVIEW (HARD AUTOMATIC TOP-CENTER CROP)
 // =======================
 
 const photoInput =
@@ -139,39 +138,10 @@ const photoInput =
 const previewImage =
   document.getElementById("previewImage");
 
-  const uploadLabel = document.getElementById("uploadLabel");
+const uploadLabel = document.getElementById("uploadLabel");
 
 const uploadPlaceholder =
   document.getElementById("uploadPlaceholder");
-
-
-//photoInput.addEventListener("change", (e) => {
-//
-//  const file = e.target.files[0];
-//
-//  if(!file) return;
-//
-//  const reader = new FileReader();
-//
-//  reader.onload = function(event){
-//
-//    previewImage.src = event.target.result;
-//
-//    previewImage.style.display = "block";
-//
-//    uploadPlaceholder.style.display = "none";
-//
-//  };
-//
-//  reader.readAsDataURL(file);
-//
-//});
-
-// =======================
-// PHOTO PREVIEW (HARD AUTOMATIC TOP-CENTER CROP)
-// =======================
-
-
 
 photoInput.addEventListener("change", (e) => {
   const file = e.target.files[0];
@@ -216,23 +186,20 @@ photoInput.addEventListener("change", (e) => {
       // Draw the cropped image onto the canvas
       ctx.drawImage(
         img,
-        sourceX, sourceY, sourceWidth, sourceHeight, // Where to cut the original image
-        0, 0, targetSize, targetSize                 // Where to place it on the new canvas
+        sourceX, sourceY, sourceWidth, sourceHeight,
+        0, 0, targetSize, targetSize
       );
 
       // Convert the canvas content back to a perfectly cropped base64 string
       const croppedBase64 = canvas.toDataURL("image/png");
 
       // Display it in the preview image element
-          previewImage.src = croppedBase64;
+      previewImage.src = croppedBase64;
       previewImage.style.display = "block";
 
-      // Remove placeholder styling
-//      uploadLabel.style.border = "none";
       uploadPlaceholder.style.display = "none";
     };
   };
 
   reader.readAsDataURL(file);
-
 });

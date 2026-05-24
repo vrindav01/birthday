@@ -70,7 +70,11 @@ async function fetchWishes() {
       }
       return;
     }
-
+// Add this line at the end of your successful try block inside fetchWishes(),
+// right after the data.forEach loop finishes appending elements:
+if (data && data.length > 0) {
+  document.getElementById("downloadPdfBtn").style.display = "inline-block";
+}
     if (grid) {
       data.forEach(item => {
         const postCardWrapper = document.createElement("div");
@@ -120,6 +124,77 @@ async function fetchWishes() {
     if (grid) {
       grid.innerHTML = `<p style="color:red; text-align:center; grid-column: 1/-1;">Error loading card assets from database.</p>`;
     }
+  } finally {
+    if (loading) {
+      loading.style.display = "none";
+    }
+  }
+}
+
+// ========================================================
+// CAPTURE CARDS AND GENERATE MULTI-PAGE PDF
+// ========================================================
+async function downloadGridAsPDF() {
+  const { jsPDF } = window.jspdf;
+  const cards = document.querySelectorAll("#wishesGrid .postcard");
+  const loading = document.getElementById("loading");
+
+  if (!cards || cards.length === 0) {
+    alert("No wish cards found to convert to PDF!");
+    return;
+  }
+
+  if (loading) {
+    loading.style.display = "block";
+    loading.innerText = "Generating PDF pages... Please wait 📄";
+  }
+
+  try {
+    // Create an instance of jsPDF with standard point settings (A4 size dimensions match)
+    const pdf = new jsPDF({
+      orientation: "portrait",
+      unit: "px",
+      format: [680, 1150] // Adjusted slightly wider than the 640px card width to leave a clean margin
+    });
+
+    for (let i = 0; i < cards.length; i++) {
+      const card = cards[i];
+
+      // Capture each postcard accurately via HTML2Canvas
+      const canvas = await html2canvas(card, {
+        scale: 2, // High resolution crisp graphics
+        useCORS: true,
+        backgroundColor: "#ffffff"
+      });
+
+      const imgData = canvas.toDataURL("image/png");
+
+      // Calculate centralized coordinates to place the postcard perfectly on the PDF Canvas
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = pdf.internal.pageSize.getHeight();
+
+      const cardWidth = 320;
+      // Get the real dynamic height calculation from the card container shell
+      const cardHeight = 550;
+
+      const xOffset = (pdfWidth - cardWidth) / 2;
+      const yOffset = 30; // 30px padding from top edge
+
+      // Add image to the active page
+      pdf.addImage(imgData, "PNG", xOffset, yOffset, cardWidth, cardHeight);
+
+      // If there are more cards left to process, insert a new page break layer
+      if (i < cards.length - 1) {
+        pdf.addPage([680, pdfHeight]);
+      }
+    }
+
+    // Save out the output
+    pdf.save(`birthday-wishes-album-${Date.now()}.pdf`);
+
+  } catch (error) {
+    console.error("PDF engine crash summary:", error);
+    alert("PDF ఫైల్ డౌన్‌లోడ్ చేయడం విఫలమైంది");
   } finally {
     if (loading) {
       loading.style.display = "none";

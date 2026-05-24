@@ -124,7 +124,7 @@ body {
 }
 
 .top-content p {
-  font-size: 0.95rem;
+  font-size: 0.75rem;
   margin-bottom: 10px;
   font-weight: bold;
   line-height: 1.4;
@@ -143,9 +143,9 @@ body {
 /* USER IMAGE CONTAINER PLACEMENT */
 .kid-photo-box-display {
   position: absolute;
-  right: 15px;
+  right: 5px;
   bottom: 15px;
-  width: 120px;
+  width: 130px;
   height: 140px;
   background: white;
   border: 4px solid #ffffff;
