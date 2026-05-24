@@ -124,6 +124,14 @@ document.addEventListener("DOMContentLoaded", () => {
       this.style.height = "auto";
       // Set height to match the internal scroll height
       this.style.height = (this.scrollHeight) + "px";
+
+      const currentLength = this.value.length;
+    const maxLength = this.maxLength; // Reads whatever maxlength is set in HTML (e.g., 90 or 100)
+
+    // If a limit is set and the user reaches it, trigger the alert
+    if (maxLength > 0 && currentLength >= maxLength) {
+      alert(`Maximum limit of ${maxLength} characters reached!`);
+    }
     });
   });
 });
