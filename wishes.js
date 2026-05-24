@@ -173,9 +173,9 @@ async function downloadGridAsPDF() {
       const pdfWidth = pdf.internal.pageSize.getWidth();
       const pdfHeight = pdf.internal.pageSize.getHeight();
 
-      const cardWidth = 320;
+      const cardWidth = 600;
       // Get the real dynamic height calculation from the card container shell
-      const cardHeight = 550;
+      const cardHeight = 950;
 
       const xOffset = (pdfWidth - cardWidth) / 2;
       const yOffset = 30; // 30px padding from top edge
