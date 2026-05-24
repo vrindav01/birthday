@@ -110,7 +110,7 @@ if (data && data.length > 0) {
               <div class="wish-display-box">${item.mischief || ''}</div>
 
               <div class="label">బర్త్డే విషెస్</div>
-              <div class="wish-display-box" style="border-color: #ff6f91;">${item.birthday_wish || ''}</div>
+              <div class="wish-display-box">${item.birthday_wish || ''}</div>
 
             </div>
           </div>
